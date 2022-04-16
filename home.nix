@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./programs/kitty.nix
     ./programs/fish
@@ -28,7 +30,7 @@
 
     extraPackages = with pkgs; [
       tree-sitter
-      pkgs.rnix-lsp
+      rnix-lsp
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.bash-language-server
@@ -113,8 +115,8 @@
     # };
     defaultApplications = {
       # "application/pdf" = [ "org.gnome.Evince.desktop" ];
-      "x-scheme-handler/http" = [ "firefox.desktop" ];
-      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = ["firefox.desktop"];
+      "x-scheme-handler/https" = ["firefox.desktop"];
     };
   };
 
@@ -124,7 +126,7 @@
     theme = ./programs/rofi/themes/slate.rasi;
   };
 
-  home.packages = with pkgs;  [
+  home.packages = with pkgs; [
     tcpdump
     firefox
     termite
@@ -183,7 +185,7 @@
     jq
     mesa.drivers
     signal-desktop
-    (yarn.override { nodejs = null; })
+    (yarn.override {nodejs = null;})
     update-systemd-resolved
     htop
     mongodb
@@ -222,6 +224,7 @@
     moreutils
     entr
     zk
+    alejandra
 
     # NUR
     nur.repos.afreakk.mongosh
